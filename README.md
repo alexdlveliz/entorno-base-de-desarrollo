@@ -1,0 +1,1 @@
+# Entorno base de desarrollo

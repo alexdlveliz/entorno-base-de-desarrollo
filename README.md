@@ -11,3 +11,7 @@ El entorno de desarrollo automatizará la compilación de archivos .scss, minifi
 - browser-sync `npm install --save-dev browser-sync`
 - gulp-minify `npm install --save-dev gulp-minify`
 - gulp-clean-css `npm install --save-dev gulp-clean-css`
+
+## Ejecución
+
+`gulp`

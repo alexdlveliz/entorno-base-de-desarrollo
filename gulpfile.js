@@ -5,7 +5,10 @@ const { src, dest, series, watch } = require('gulp');
 const sass = require('gulp-sass');
 const minJS = require('gulp-minify');
 const minCSS = require('gulp-clean-css');
+const minImg = require('gulp-imagemin');
 const browserSync = require('browser-sync');
+const imagemin = require('gulp-imagemin');
+
 
 // Constantes de trabajo
 const files = {
@@ -13,6 +16,7 @@ const files = {
     cssPath: './dist/css/**/*.css',
     htmlPath: './dist/**/*.html',
     jsPath: './src/js/**/*.js',
+    imgPath: './src/images/**/*'
 }
 
 // Tasks
@@ -32,6 +36,12 @@ const minifyCss = done => {
     return src(files.cssPath)
         .pipe(minCSS())
         .pipe(dest('./dist/css/'));
+}
+
+const minifyImg = done => {
+    return src(files.imgPath)
+        .pipe(imagemin())
+        .pipe(dest('./dist/images/'));
 }
 
 const watchTask = done => {
@@ -55,4 +65,4 @@ const reload = done => {
     done();
 }
 
-exports.default = series(compileScss, minifyCss, minifyJs, serve, watchTask);
+exports.default = series(compileScss, minifyCss, minifyJs, minifyImg, serve, watchTask);

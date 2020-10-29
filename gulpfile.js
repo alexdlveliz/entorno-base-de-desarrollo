@@ -5,7 +5,6 @@ const { src, dest, series, watch } = require('gulp');
 const sass = require('gulp-sass');
 const minJS = require('gulp-minify');
 const minCSS = require('gulp-clean-css');
-const minImg = require('gulp-imagemin');
 const browserSync = require('browser-sync');
 const imagemin = require('gulp-imagemin');
 
@@ -47,7 +46,7 @@ const minifyImg = done => {
 const watchTask = done => {
     watch(
         [files.scssPath, files.htmlPath],
-        series(compileScss, minifyCss, minifyJs, reload)
+        series(compileScss, minifyCss, minifyJs, minifyImg, reload)
     );
 }
 
